@@ -1,0 +1,21 @@
+body{
+
+
+}
+
+.movieCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.movieCards .movieCard{
+    width: 200px;
+}
+
+
+
+
+.movieCard img{
+    width: 100%;
+}

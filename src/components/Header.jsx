@@ -7,7 +7,7 @@ const Header = ({ title }) => (
 );
 
 Header.defaultProps = {
-    title: 'Awesome App'
+    title: '.MOV'
 }
 
 export default Header;
