@@ -27,9 +27,8 @@ function AppRouter() {
         {/* <Nav /> */}
         <Routes>
           <Route path="/" exact element={<PageHome />} />
-          <Route path="/about" element={<PageAbout />} />
           <Route path="/favourites" element={<PageFavs />} />
-         
+          <Route path="/about" element={<PageAbout />} />
         </Routes>
         <Footer author={appAuthor} />
       </div>

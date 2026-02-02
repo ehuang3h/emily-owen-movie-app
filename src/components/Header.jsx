@@ -6,8 +6,9 @@ const Header = ({ title }) => (
         <nav id='nav-bar'>
             <NavLink id='logo' to="/">{title}</NavLink>
             <ul>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/contact">Favourites</NavLink></li>
+                <li><NavLink className='nav-links' to="/">Home</NavLink></li>
+                <li><NavLink className='nav-links' to="/favourites">Favourites</NavLink></li>
+                <li><NavLink className='nav-links' to="/about">About</NavLink></li>
             </ul>
         </nav>
     </header>
