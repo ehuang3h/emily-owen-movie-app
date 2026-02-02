@@ -1,7 +1,7 @@
 // Page Favs
-
 import { useEffect } from 'react';
 import { appTitle } from '../globals/globalVariables';
+// Stylesheets
 
 function PageAbout() {
 

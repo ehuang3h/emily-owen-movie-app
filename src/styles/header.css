@@ -1,0 +1,32 @@
+/* HEADER.CSS: stylesheet for Header.jsx */
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Nav list */
+#nav-bar ul {
+    /* Reset  link defaults */
+    list-style: none;
+
+    /* Flex styling */
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+/* Nav links */
+#nav-bar ul li a, #logo {
+    /* Reset link defaults */
+    text-decoration: none;
+}
+
+/* Logo */
+#logo {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 2rem;
+}
