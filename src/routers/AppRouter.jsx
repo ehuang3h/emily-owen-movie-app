@@ -15,8 +15,9 @@ import { appTitle, appAuthor } from '../globals/globalVariables';
 // Stylesheets
 import '../styles/normalize-fwd.css';
 import '../styles/fonts.css';
-import '../styles/main.css';
 import '../styles/header.css';
+import '../styles/main.css';
+import '../styles/about.css';
 
 
 function AppRouter() {
