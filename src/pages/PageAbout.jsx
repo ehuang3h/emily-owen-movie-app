@@ -11,11 +11,12 @@ function PageAbout() {
 
     return (
         <main>
-		    <section>
-                <h2>About .MOV</h2>
-                
+            <section>
+                <h1>.mov</h1>
+                <p>.mov is a movie database built for film fanatics passionate about finding their next movie to binge.  Users can search, filter, and save movies to their favorites list, or discover new movie recommendations based on their favorite films.</p>
+                <p><em>This product uses the TMDb API but is not endorsed or certified by TMDb.</em></p>
             </section>
-	    </main>
+        </main>
     );
 	
 }
