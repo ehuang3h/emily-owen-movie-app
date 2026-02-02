@@ -1,0 +1,17 @@
+/* NAV.CSS: stylesheet for Nav.jsx */
+
+/* Nav list */
+#nav-bar ul {
+    /* Reset  link defaults */
+    list-style: none;
+
+    display: flex;
+    
+    gap: 2rem;
+}
+
+/* Nav links */
+#nav-bar ul li a{
+    /* Reset link defaults */
+    text-decoration: none;
+}

@@ -1,4 +1,4 @@
-export const appTitle = '.MOV';
+export const appTitle = '.mov';
 export const appAuthor = 'Emily Huang, Owen Chan.';
 export const endPointSearch = 'https://api.thecatapi.com/v1/images/search?';
 //url for getting particular images

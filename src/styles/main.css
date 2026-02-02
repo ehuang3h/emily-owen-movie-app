@@ -1,0 +1,52 @@
+/* MAIN.CSS: stylesheet for general styling */
+
+/* VARIABLES */
+:root {
+    /* Fonts */
+    --body-font: "Rubik";
+    --heading-font: "Poppins";
+
+    /* Colors */
+    --bg-color: #030f1d;
+    --text-color: #e8edf3;
+}
+
+/* LAYOUT */
+
+/* Site Wrapper */
+.wrapper {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* TYPOGRAPHY */
+
+/* Body - Rubik */
+body {
+    font-family: var(--body-font), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    /* Colors */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+p {
+    max-width: 40rem;
+}
+
+/* Headings - Poppins */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font), sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+}
