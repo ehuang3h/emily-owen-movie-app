@@ -9,7 +9,7 @@ export const upcoming = 'https://api.themoviedb.org/3/movie/upcoming';
 
 //each of these contains all the movie objects, each movie has an id
 
-export const movieDetails ='https://api.themoviedb.org/3/movie/{movie_id}';
+export const movieDetails ='https://api.themoviedb.org/3/movie/';
 // id here corresponds to the movie id from before 
 
 export const apiKey = import.meta.env.VITE_MOVIE_API;

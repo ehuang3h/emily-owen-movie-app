@@ -44,7 +44,7 @@ function PageHome(){
 				<div className="movieCards">
 					{movies && movies.map(movie =>{return(
 					
-							<MovieCard imgPath={movie.poster_path} title={movie.title}/>
+							<MovieCard imgPath={movie.poster_path} title={movie.title} movieId={movie.id}/>
 						);
 					})}
                         
