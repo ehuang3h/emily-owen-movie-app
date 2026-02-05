@@ -15,7 +15,7 @@ const Header = ({ title }) => (
 );
 
 Header.defaultProps = {
-    title: 'Default App'
+    title: '.MOV'
 }
 
 export default Header;

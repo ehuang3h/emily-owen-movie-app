@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import PageHome from '../pages/PageHome';
 import PageAbout from '../pages/PageAbout';
 import PageFavs from '../pages/PageFavs';
+import PageDetails from'../pages/PageDetails';
 
 import { appTitle, appAuthor } from '../globals/globalVariables';
 
@@ -29,8 +30,10 @@ function AppRouter() {
         <Routes>
           <Route path="/" exact element={<PageHome />} />
           <Route path="/favourites" element={<PageFavs />} />
+          <Route path="/details/:movieId" element={<PageDetails />} />
           <Route path="/about" element={<PageAbout />} />
         </Routes>
+        
         <Footer author={appAuthor} />
       </div>
     </BrowserRouter>
