@@ -1,4 +1,4 @@
-export const appTitle = '.MOV';
+export const appTitle = '.mov';
 export const appAuthor = 'Emily Huang, Owen Chan.';
 
 //searchpoints

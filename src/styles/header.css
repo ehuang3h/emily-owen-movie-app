@@ -1,0 +1,66 @@
+/* HEADER.CSS: stylesheet for Header.jsx */
+:root {
+    --logo-color: #e8edf3;
+    --link-color: #5d8bec;
+    --hover-color: #e8edf3;
+}
+
+/* Nav-links */
+nav {
+    display: flex;
+    align-items: baseline;
+}
+
+/* Nav list (Home/Favourites/About) */
+#nav-bar ul {
+    /* Reset  link defaults */
+    list-style: none;
+
+    /* Flex styling */
+    display: flex;
+    width: 100%;
+
+    /* Position at bottom of screen */
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-evenly;
+    z-index: 100;
+}
+
+/* Nav links + logo */
+#nav-bar ul li a, #logo {
+    /* Reset link defaults */
+    text-decoration: none;
+}
+
+/* Logo */
+#logo {
+    font-family: "Oleo Script", system-ui;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 3rem;
+    color: var(--logo-color);
+}
+
+/* Home/About/Favorites links */
+.nav-links {
+    color: var(--link-color);
+    font-family: "Poppins", sans-serif;
+    font-size: 1.25rem;
+}
+
+/* Link states */
+.nav-links:hover {
+    color: var(--hover-color);
+}
+ 
+@media(min-width: 64em) {
+    #nav-bar ul {
+        position: static;
+        justify-content: flex-end;
+        gap: 5rem;
+    }
+}

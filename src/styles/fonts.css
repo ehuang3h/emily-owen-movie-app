@@ -1,0 +1,8 @@
+/* FONTS.CSS: Defines fonts used in app */
+
+/* Body - Rubik (400) */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap');
+/* Headings - Poppins (700) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+/* Logo - Oleo Script (700) */
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap');

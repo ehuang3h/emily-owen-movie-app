@@ -3,7 +3,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //components
 import Header from '../components/Header';
-import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
 //pages
@@ -14,17 +13,25 @@ import PageDetails from'../pages/PageDetails';
 
 import { appTitle, appAuthor } from '../globals/globalVariables';
 
+// Stylesheets
+import '../styles/normalize-fwd.css';
+import '../styles/fonts.css';
+import '../styles/header.css';
+import '../styles/main.css';
+import '../styles/about.css';
+
+
 function AppRouter() {
   return (
     <BrowserRouter>
       <div className="wrapper">
         <Header title={appTitle} />
-        <Nav />
+        {/* <Nav /> */}
         <Routes>
           <Route path="/" exact element={<PageHome />} />
-          <Route path="/about" element={<PageAbout />} />
           <Route path="/favourites" element={<PageFavs />} />
           <Route path="/details/:movieId" element={<PageDetails />} />
+          <Route path="/about" element={<PageAbout />} />
         </Routes>
         
         <Footer author={appAuthor} />
