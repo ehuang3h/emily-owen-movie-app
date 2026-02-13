@@ -1,14 +1,25 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-function MovieCard({title, releaseDate, rating, imgPath, movieId, genres, genresList}){
+function MovieCard({title, year, rating, imgPath, movieId, genres, genresList,overview}){
     const [isClicked, setIsClicked] = useState(false);
 
     const handleClick = () => {
         setIsClicked(!isClicked);
     };
 
-     const getGenreNames = () => {
+    function truncateToWordLength(str, numWords, ending = '...') {
+        const words = str.trim().split(/\s+/);
+
+            if (words.length <= numWords) {
+                return str;
+            }
+        const truncatedWords = words.slice(0, numWords);
+        return truncatedWords.join(' ') + ending;
+    }
+
+    const dateArray = year.split('-');
+    const getGenreNames = () => {
         if (!genres || !genresList || genresList.length === 0) return '';
         
         return genres
@@ -32,26 +43,24 @@ function MovieCard({title, releaseDate, rating, imgPath, movieId, genres, genres
                 }}
             />
             {isClicked && (
-                <Link 
-                    to={`/details/${movieId}`}
-                    className='movie-link'
-                    style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        zIndex: 10,
-                        color: 'white',
-                        textDecoration: 'none',
-                        padding: '10px 20px',
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        borderRadius: '5px'
-                    }}
-                >
-                    View Details
-                </Link>
+                <div className='card-popup'>
+                    <p>{truncateToWordLength(overview,8)}</p>
+                    <Link 
+                        to={`/details/${movieId}`}
+                        className='movie-link'
+            
+                    >
+                        Read More
+                    </Link>
+                </div>
             )}
+            <p>{dateArray[0]}</p>
+            <Link to={`/details/${movieId}`}style={{
+                        color:'white',
+                        textDecoration: 'none'
+                    }}>
             <h2>{title}</h2>
+            </Link>
             <p className="genres">{getGenreNames()}</p>
         </div>
     );

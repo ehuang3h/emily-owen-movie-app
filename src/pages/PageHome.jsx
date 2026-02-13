@@ -71,7 +71,7 @@ function PageHome(){
 				{/* cards */}
 				<div className="movieCards">
 					{movies && movies.map(movie =>{return(
-							<MovieCard imgPath={movie.poster_path} title={movie.title} movieId={movie.id} genres={movie.genre_ids} genresList={genresList}/>
+							<MovieCard imgPath={movie.poster_path} title={movie.title} movieId={movie.id} genres={movie.genre_ids} genresList={genresList} year={movie.release_date} overview={movie.overview}/>
 
 						);
 					})}
