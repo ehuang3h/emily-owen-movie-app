@@ -6,7 +6,7 @@ export const nowPlaying = 'https://api.themoviedb.org/3/movie/now_playing';
 export const popular = 'https://api.themoviedb.org/3/movie/popular';
 export const topRated = 'https://api.themoviedb.org/3/movie/top_rated';
 export const upcoming = 'https://api.themoviedb.org/3/movie/upcoming';
-
+export const genres = 'https://api.themoviedb.org/3/genre/movie/list';
 //each of these contains all the movie objects, each movie has an id
 
 export const movieDetails ='https://api.themoviedb.org/3/movie/';
