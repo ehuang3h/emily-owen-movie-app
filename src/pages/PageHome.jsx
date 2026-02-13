@@ -59,13 +59,15 @@ function PageHome(){
             </section>
 
 			<section>
-				<input type="search" name="searchbar" id="searchbar" placeholder='search' />
-				{/* filter btns */}
-				<div className="filters">
-					<button onClick={() => setFilter(nowPlaying)}>Now Playing</button>
-					<button onClick={() => setFilter(topRated)}>Top Rated</button>
-					<button onClick={() => setFilter(upcoming)}>Upcoming</button>
-					<button onClick={() => setFilter(popular)}>Popular</button>
+				<div className='search-filter-bar'>
+					{/* filter btns */}
+					<div className="movie-filters">
+						<button onClick={() => setFilter(nowPlaying)}>Now Playing</button>
+						<button onClick={() => setFilter(topRated)}>Top Rated</button>
+						<button onClick={() => setFilter(upcoming)}>Upcoming</button>
+						<button onClick={() => setFilter(popular)}>Popular</button>
+					</div>
+					<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' />
 				</div>
 
 				{/* cards */}

@@ -1,22 +1,44 @@
+.search-filter-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.search-bar{
+    background-color: var(--bg-color);
+    color:var(--link-color);
+    border-style: none;
+    border-bottom: 2px solid;
+}
+
+/* movie cards container */
 .movieCards{
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: space-between;
 }
 
+/* individual cards */
 .movieCard {
     position: relative;
     cursor: pointer;
 }
 
-
 .movieCards .movieCard{
     width: 200px;
 }
 
-
 .movieCard img{
     width: 100%;
+}
+
+.movieCard h2{
+    margin-top: 0;
+}
+
+.card-year{
+    margin-bottom: 0;
 }
 
 .movie-link{
@@ -27,8 +49,8 @@
     z-index: 10;
     color: var(--link-color);
     font-weight: 700;
-    
-    border-radius: 5px;
+    text-decoration: underline 2px;
+
 }
 
 .card-popup p{
@@ -38,4 +60,20 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     width:80%;
+}
+
+/* Movie filters */
+.movie-filters button{
+    background-color: var(--bg-color);
+    color:var(--link-color);
+    padding: 1rem;
+    font-weight: 700;
+    border-style: none;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    
+}
+
+.movie-filters button:hover{
+    color: var(--text-color);
 }

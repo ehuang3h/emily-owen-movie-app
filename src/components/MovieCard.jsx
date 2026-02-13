@@ -54,7 +54,7 @@ function MovieCard({title, year, rating, imgPath, movieId, genres, genresList,ov
                     </Link>
                 </div>
             )}
-            <p>{dateArray[0]}</p>
+            <p className='card-year'>{dateArray[0]}</p>
             <Link to={`/details/${movieId}`}style={{
                         color:'white',
                         textDecoration: 'none'
