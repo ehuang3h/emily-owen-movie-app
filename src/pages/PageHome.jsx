@@ -1,7 +1,7 @@
 // Page Home
 
 import { useEffect, useState } from 'react';
-import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken} from '../globals/globalVariables';
+import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres} from '../globals/globalVariables';
 import MovieCard from '../components/MovieCard';
 
 function PageHome(){
@@ -9,9 +9,10 @@ function PageHome(){
 
 	const [movies, setMovies] = useState([]);
 	const [filter, setFilter] = useState(nowPlaying);
+	const [genresList, setGenresList] = useState([]);
 
 	 useEffect(() => {
-        const fetchNowPlayingMovies = async () => {
+        const fetchMovies = async () => {
             
             const response = await fetch(filter, {
           
@@ -26,8 +27,27 @@ function PageHome(){
 			setMovies(data.results);
             
         }
-        fetchNowPlayingMovies();
+        fetchMovies();
     }, [filter]);
+
+	useEffect(() => {
+        const fetchGenres = async () => {
+            
+            const response = await fetch(genres, {
+          
+				headers: {
+					accept: 'application/json',
+					Authorization: 'Bearer '
+					+apiReadToken
+				}
+            });
+            let genreData = await response.json();
+			setGenresList(genreData.genres);
+			
+            
+        }
+        fetchGenres();
+    }, []);
 
 	
 
@@ -39,20 +59,22 @@ function PageHome(){
             </section>
 
 			<section>
-				<input type="search" name="searchbar" id="searchbar" placeholder='search' />
-				{/* filter btns */}
-				<div className="filters">
-					<button onClick={() => setFilter(nowPlaying)}>Now Playing</button>
-					<button onClick={() => setFilter(topRated)}>Top Rated</button>
-					<button onClick={() => setFilter(upcoming)}>Upcoming</button>
-					<button onClick={() => setFilter(popular)}>Popular</button>
+				<div className='search-filter-bar'>
+					{/* filter btns */}
+					<div className="movie-filters">
+						<button onClick={() => setFilter(nowPlaying)}>Now Playing</button>
+						<button onClick={() => setFilter(topRated)}>Top Rated</button>
+						<button onClick={() => setFilter(upcoming)}>Upcoming</button>
+						<button onClick={() => setFilter(popular)}>Popular</button>
+					</div>
+					<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' />
 				</div>
 
 				{/* cards */}
 				<div className="movieCards">
 					{movies && movies.map(movie =>{return(
-					
-							<MovieCard imgPath={movie.poster_path} title={movie.title} movieId={movie.id}/>
+							<MovieCard imgPath={movie.poster_path} title={movie.title} movieId={movie.id} genres={movie.genre_ids} genresList={genresList} year={movie.release_date} overview={movie.overview}/>
+
 						);
 					})}
                         

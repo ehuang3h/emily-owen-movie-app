@@ -19,7 +19,7 @@ import '../styles/fonts.css';
 import '../styles/header.css';
 import '../styles/main.css';
 import '../styles/about.css';
-
+import '../styles/home.css';
 
 function AppRouter() {
   return (
