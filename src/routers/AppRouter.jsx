@@ -21,6 +21,8 @@ import '../styles/main.css';
 import '../styles/about.css';
 import '../styles/home.css';
 import '../styles/favourites.css'
+import '../styles/details.css';
+
 function AppRouter() {
   return (
     <BrowserRouter>

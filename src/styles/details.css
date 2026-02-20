@@ -1,0 +1,97 @@
+/* DETAILS.CSS: stylesheet for PageDetails */
+
+/* OVERVIEW SECTION */
+
+/* Backdrop Photo */
+.backdrop-container {
+    position: relative;
+    width: 100vw;
+    height: 35vw;
+    margin-left: calc(50% - 50vw);
+}
+
+.backdrop-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center; 
+}
+
+/* Gradient filter container: https://jsfiddle.net/hcr3Lmj1/2/ */ 
+.backdrop-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        var(--bg-color),
+        rgba(0,0,0,0) 75%
+    );
+    pointer-events: none;
+}
+
+#overview p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Rating Container */
+#rating-container {
+    border: 5px solid white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#rating-container p {
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Link states */
+.explore-content:hover {
+    color: var(--hover-color);
+}
+
+
+/* CAST SECTION */
+
+/* Cast Layout */
+.cast-layout {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.cast-card {
+    text-align: center;
+}
+
+/* Cast Photo */
+.circular-cast-photo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.cast-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TRAILER SECTION */
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.trailer-container {
+    aspect-ratio: 16 / 9;
+}
