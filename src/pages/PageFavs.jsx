@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import { appTitle } from '../globals/globalVariables';
 import MovieCard from '../components/MovieCard';
-import { useSelector } from 'react-redux';
+import FavsButton from '../components/FavsButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteFav } from '../favs/favSlice';
 function PageFavs() {
 
     useEffect(() => {
@@ -27,6 +29,14 @@ function PageFavs() {
         }
     });
 
+    const dispatch = useDispatch();
+
+    function handleFavClick(addToFav, obj) {
+        if (addToFav === false) {
+            dispatch(deleteFav(obj));
+        }
+    }
+
     return (
         <main>
             <section>
@@ -44,12 +54,24 @@ function PageFavs() {
                 </div>
     
 
-                {favs.length < 1 ? <p>Your favourites list is currently empty. Add favourite movies by clicking the (save-icon) on movie cards.</p> : 
+                {favs.length < 1 ? <p>Your favourites list is currently empty. Add favourite movies by clicking the <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#5d8bec"><path d="M200-120v-665q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480-240 200-120Zm60-91 220-93 220 93v-574H260v574Zm0-574h440-440Z"/></svg> on movie cards.</p> : 
                     <div className="favs-area">
                         {sortedFavs.map((movie, i) => {
-                            return <MovieCard key={i} 
-                                           movieObj={movie}
-                                           isFav={true} movieId={movie.id} /> 
+                            return( <div className='favs-card'>
+                            <MovieCard key={i} 
+                                movieObj={movie}
+                                isFav={true} movieId={movie.id} 
+                            /> 
+                                            
+                            <div className='favs-icon'>
+                                <FavsButton
+                                    movieObj={movie}
+                                    isFav={true}
+                                    handleFavClick={handleFavClick}
+                                />
+                            </div>
+                           </div>
+                           )
                                            
                                            
                         })}

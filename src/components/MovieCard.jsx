@@ -19,7 +19,7 @@ function MovieCard({movieObj, movieId, genresList}){
         return truncatedWords.join(' ') + ending;
     }
     //convert rating to percent
-    const percentRating = Math.trunc(movieObj.vote_average/10*100);
+    const percentRating = Math.trunc(movieObj.vote_average*10);
 
     //get year of movie 
     const dateArray = movieObj.release_date.split('-');

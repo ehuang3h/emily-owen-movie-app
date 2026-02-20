@@ -3,3 +3,22 @@
     flex-direction: row;
     gap: 1rem;
 }
+
+.favs-button{
+    background-color: transparent;
+    border: none;
+}
+
+.favs-card{
+    position: relative;
+}
+.favs-icon{
+    position: absolute;
+    top: -3%;
+    right: -8%;
+}
+
+.favs-button svg:hover{
+    fill: var(--text-color);
+    transition-duration: 0.3s;
+}
