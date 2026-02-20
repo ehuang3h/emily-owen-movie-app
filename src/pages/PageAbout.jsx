@@ -1,4 +1,5 @@
-// Page Favs
+// PAGE ABOUT 
+
 import { useEffect } from 'react';
 import { appTitle } from '../globals/globalVariables';
 // Images
