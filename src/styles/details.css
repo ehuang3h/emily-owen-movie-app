@@ -3,32 +3,40 @@
 /* OVERVIEW SECTION */
 
 /* Backdrop Photo */
-.backdrop-container { 
-    position: relative; 
-    height: 100%; 
-    width: 100vw; 
-    margin-left: calc(50% - 50vw); 
-    overflow-x: hidden;
-} 
+.backdrop-container {
+    position: relative;
+    width: 100vw;
+    height: 35vw;
+    margin-left: calc(50% - 50vw);
+}
 
 .backdrop-container img {
-    width: 100%; 
-} 
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center; 
+}
 
 /* Gradient filter container: https://jsfiddle.net/hcr3Lmj1/2/ */ 
-.backdrop-container:after { 
-     overflow-x: hidden;
-    position: absolute; content:"";
-    height: 100%; 
-    width: 100vw; 
-    top: 0; 
-    left: 0; 
-    background: linear-gradient(to top, var(--bg-color), rgba(0,0,0,0) 75%);
-     
+.backdrop-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        var(--bg-color),
+        rgba(0,0,0,0) 75%
+    );
+    pointer-events: none;
+}
+
+#overview p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
 /* Rating Container */
-.rating-container {
+#rating-container {
     border: 5px solid white;
     width: 3rem;
     height: 3rem;
@@ -38,22 +46,9 @@
     align-items: center;
 }
 
-.rating-container p {
+#rating-container p {
     margin: 0;
     font-weight: 700;
-}
-
-/* Explore Link */
-.explore-content {
-    color: var(--link-color);
-    font-weight: 700;
-    font-size: 1.5rem;
-    position: absolute;
-    bottom: 15vw;
-    left: 50%;
-    z-index: 100;
-    text-decoration: none;
-    text-align: center;
 }
 
 /* Link states */
@@ -69,6 +64,7 @@
     display: flex;
     gap: 2.5rem;
     overflow-x: auto;
+    max-width: 100%;
 }
 
 .cast-card {

@@ -17,7 +17,6 @@ function PageDetails() {
     const [movieData, setMovieData] = useState([]);
     const [castData, setCastData] = useState([]);
     const [trailerData, setTrailerData] = useState([]);
-    const [ratingData, setRatingData] = useState([]);
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -61,26 +60,11 @@ function PageDetails() {
             let data = await response.json();
             setTrailerData(data);
         }
-
-        const fetchRatingData = async () => {
-            const response = await fetch(
-                `${movieDetails}${movieId}/release_dates`, 
-                {
-                    headers: {
-                        accept: 'application/json',
-                        Authorization: 'Bearer ' + apiReadToken
-                    }
-                }
-            );
-            let data = await response.json();
-            setRatingData(data);
-        }
         
         if (movieId) {
             fetchMovieData();
             fetchCastData();
             fetchTrailerData();
-            fetchRatingData();
         }
     }, [movieId]);
 
@@ -91,7 +75,6 @@ function PageDetails() {
                     {/* Overview */}
                     <div className='backdrop-container'>
                         <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt="" />
-                        <a className='explore-content' href="#overview">Explore<br/>v</a>
                     </div>
                     <div id="overview">
                         <h1>{movieData.title}</h1>
@@ -99,10 +82,8 @@ function PageDetails() {
                         <p>{movieData.genres && 
                             movieData.genres.map((genre) => genre.name).join(', ')}
                         </p>
-                        <div className='rating-container'>
-                            <p>{ratingData.results && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA") && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates &&
-                                ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates[0].certification ||
-                                "NR"}</p>
+                        <div id='rating-container'>
+                            <p>{Math.trunc(movieData.vote_average * 10)}%</p>
                         </div>
                         <p>{movieData.overview}</p>
                     </div>

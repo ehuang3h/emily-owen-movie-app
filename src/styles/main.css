@@ -12,6 +12,7 @@
 
     /* Scrolling - used for jump to section links */
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* LAYOUT */
@@ -20,7 +21,7 @@
 .wrapper {
     max-width: 75rem;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 /* TYPOGRAPHY */
@@ -51,5 +52,5 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 4rem;
-    margin-bottom: 0;
+    margin: 0;
 }
