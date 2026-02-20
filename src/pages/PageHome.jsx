@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres} from '../globals/globalVariables';
 import MovieCard from '../components/MovieCard';
-
+import MovieSlider from '../components/MovieSlider';
 function PageHome(){
 
 
@@ -11,7 +11,7 @@ function PageHome(){
 	const [filter, setFilter] = useState(nowPlaying);
 	const [genresList, setGenresList] = useState([]);
 
-	 useEffect(() => {
+	useEffect(() => {
         const fetchMovies = async () => {
             
             const response = await fetch(filter, {
@@ -49,8 +49,10 @@ function PageHome(){
         fetchGenres();
     }, []);
 
+	useEffect(() => {
+        document.title = `${appTitle} - Home`;
+    }, []);
 	
-
 	return (
 		<main>
             <section>
@@ -73,15 +75,11 @@ function PageHome(){
 				{/* cards */}
 				<div className="movieCards">
 					{movies && movies.map(movie =>{return(
-							<MovieCard imgPath={movie.poster_path} title={movie.title} movieId={movie.id} genres={movie.genre_ids} genresList={genresList} year={movie.release_date} overview={movie.overview}/>
-
+							<MovieCard key={filter + movie.id} movieObj={movie} movieId={movie.id} genresList={genresList}/>
+						
 						);
 					})}
-                        
-                    
-					
-
-					
+  
 				</div>
 				
 
