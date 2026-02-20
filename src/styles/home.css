@@ -42,7 +42,7 @@
 
 .movie-link{
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -54,9 +54,9 @@
 
 }
 
-.card-popup p{
+.card-popup .excerpt{
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -80,6 +80,30 @@
     color: var(--text-color);
 }
 
+
+
+.rating-circle{
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-color: black;
+    border: 2px white solid;
+    border-radius: 50%;
+    top: 5%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.rating{
+    position: absolute;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%; 
+    margin: 0;
+    transform: translate(-50%, -50%);
+}
+
 @media(min-width:650px){
     .movieCard{
         width: 12rem;
@@ -94,11 +118,13 @@
         padding: 1rem;
     }
 
-    .card-popup p{
+    .card-popup p, .movie-link{
         font-size: 1rem;
     }
 
-    .movie-link{
-        font-size: 1rem;
+    .rating-circle{
+        height: 2.35rem;
+        width: 2.35rem;
     }
+
 }
