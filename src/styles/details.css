@@ -73,8 +73,8 @@
 
 /* Cast Photo */
 .circular-cast-photo {
-    width: 5rem;
-    height: 5rem;
+    width: 7.5rem;
+    height: 7.5rem;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -94,4 +94,38 @@ iframe {
 
 .trailer-container {
     aspect-ratio: 16 / 9;
+}
+
+/* EXPLORE MORE SECTION */
+#explore-container {
+    display: flex;
+    overflow-x: auto;
+    column-gap: 2.5rem;
+    
+}
+
+#explore-container p {
+    margin-top: 0;
+}
+
+.movie-card-details {
+    position: relative;
+    cursor: pointer;
+    flex: 0 0 12.5rem;
+}
+
+.movie-card-details img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+
+.card-details-popup p{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width:80%;
+    font-size: 0.8rem;
 }

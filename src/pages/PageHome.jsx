@@ -1,7 +1,7 @@
 // Page Home
 
 import { useEffect, useState } from 'react';
-import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres} from '../globals/globalVariables';
+import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres } from '../globals/globalVariables';
 import MovieCard from '../components/MovieCard';
 
 function PageHome(){
@@ -11,7 +11,14 @@ function PageHome(){
 	const [filter, setFilter] = useState(nowPlaying);
 	const [genresList, setGenresList] = useState([]);
 
-	 useEffect(() => {
+	// Search function 
+	const [search, setSearch] = useState([]); // Searched movie name
+	const [searchResult, setSearchResult] = useState([]); // Search results
+	const changeHandler = e => {
+		setSearch(e.target.value);
+	}
+
+	useEffect(() => {
         const fetchMovies = async () => {
             
             const response = await fetch(filter, {
@@ -23,7 +30,6 @@ function PageHome(){
 				}
             });
             let data = await response.json();
-			
 			setMovies(data.results);
             
         }
@@ -43,13 +49,32 @@ function PageHome(){
             });
             let genreData = await response.json();
 			setGenresList(genreData.genres);
-			
-            
         }
         fetchGenres();
     }, []);
 
-	
+	useEffect(() => {
+		const fetchSearch = async () => {
+
+			// Empty search
+			if (search.trim() === "") {
+				setSearch([]);
+				return;
+			}
+
+			const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${search}`, {
+          
+				headers: {
+					accept: 'application/json',
+					Authorization: 'Bearer '
+					+apiReadToken
+				}
+            });
+			let searchData = await response.json();
+			setSearchResult(searchData.results.slice(0,3)); //top 3 results
+		}
+		fetchSearch();
+	}, [search])
 
 	return (
 		<main>
@@ -67,7 +92,18 @@ function PageHome(){
 						<button onClick={() => setFilter(upcoming)}>Upcoming</button>
 						<button onClick={() => setFilter(popular)}>Popular</button>
 					</div>
-					<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' />
+					{/* https://www.youtube.com/watch?v=o1XcuaCcsDA - 'Search Bar with Auto Suggestions using API' section */}
+					<div className='search-container'>
+						<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' onChange={changeHandler} value={search}/>
+						<div className='search-results'>
+							{searchResult.map((result) => {
+								return <div className='individual-search-result'>
+											<img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt={result.title}/>
+											<a href={`/details/${result.id}`}>{result.title}</a>
+										</div>
+							})}
+						</div>
+					</div>
 				</div>
 
 				{/* cards */}
@@ -77,18 +113,10 @@ function PageHome(){
 
 						);
 					})}
-                        
-                    
-					
-
-					
 				</div>
-				
-
 			</section>
         </main>
 	);
-
 }
 
 export default PageHome;

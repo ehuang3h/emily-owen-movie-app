@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 2rem;
+    align-items: center;
 }
 
 .search-bar{
@@ -10,6 +11,7 @@
     color:var(--link-color);
     border-style: none;
     border-bottom: 2px solid;
+    width: 15rem;
 }
 
 /* movie cards container */
@@ -101,4 +103,38 @@
     .movie-link{
         font-size: 1rem;
     }
+}
+
+/* SEARCH SECTION */
+
+/* Entire search container */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 15rem;
+}
+
+/* Search results */
+.search-results {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 150%;
+    z-index: 10;
+    background-color: white;
+    row-gap: 0.5rem;
+    padding: 0.75rem;
+}
+
+/* Individual search result */
+.individual-search-result {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.individual-search-result img {
+    width: 30%;
 }

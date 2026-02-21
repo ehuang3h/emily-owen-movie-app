@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { appTitle, movieDetails, apiReadToken } from '../globals/globalVariables';
 
 import CastCard from '../components/CastCard'
+import MovieCardDetails from '../components/MovieCardDetails';
 
 function PageDetails() {
 
@@ -17,6 +18,7 @@ function PageDetails() {
     const [movieData, setMovieData] = useState([]);
     const [castData, setCastData] = useState([]);
     const [trailerData, setTrailerData] = useState([]);
+    const [recommendationsData, setRecommendationsData] = useState([]);
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -60,17 +62,32 @@ function PageDetails() {
             let data = await response.json();
             setTrailerData(data);
         }
-        
+
+        const fetchRecommendationsData = async () => {
+            const response = await fetch(
+                `${movieDetails}${movieId}/recommendations`, 
+                {
+                    headers: {
+                        accept: 'application/json',
+                        Authorization: 'Bearer ' + apiReadToken
+                    }
+                }
+            );
+            let data = await response.json();
+            setRecommendationsData(data);
+        }
+    
         if (movieId) {
             fetchMovieData();
             fetchCastData();
             fetchTrailerData();
+            fetchRecommendationsData();
         }
     }, [movieId]);
 
     return (
         <main>
-            {movieData && castData && trailerData && (
+            {movieData && castData && trailerData && recommendationsData && (
                 <>
                     {/* Overview */}
                     <div className='backdrop-container'>
@@ -102,7 +119,7 @@ function PageDetails() {
                     {/* Trailer */}
                     <section className='trailer-container'>
                         <h2>Trailer</h2>
-                        <iframe src={trailerData.results  && trailerData.results[0].site=='YouTube' && 
+                        <iframe src={trailerData.results  && trailerData.results.find(video => video.site=='YouTube') && 
                                     `https://www.youtube.com/embed/${trailerData.results[0].key}`}
                                 allowFullScreen>        
                         </iframe>
@@ -111,9 +128,14 @@ function PageDetails() {
                     {/* Explore More */}
                     <section>
                         <h2>Explore More</h2>
+                        <div id='explore-container'>
+                            {recommendationsData.results && 
+                            recommendationsData.total_results > 0 &&   
+                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} overview={movie.overview}/>)})}
+                        </div>
                     </section>
                 </>
-            )}
+            )} n
         </main>
     );
     
