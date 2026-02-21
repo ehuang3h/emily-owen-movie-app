@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { appTitle, movieDetails, apiReadToken } from '../globals/globalVariables';
+import FavsButton from '../components/FavsButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFav, deleteFav } from '../favs/favSlice';
 
 import CastCard from '../components/CastCard'
 import MovieCardDetails from '../components/MovieCardDetails';
@@ -14,16 +17,28 @@ function PageDetails() {
     }, []);
 
     const { movieId } = useParams();
-    
     const [movieData, setMovieData] = useState([]);
     const [castData, setCastData] = useState([]);
     const [trailerData, setTrailerData] = useState([]);
     const [recommendationsData, setRecommendationsData] = useState([]);
 
+    const favs = useSelector((state) => state.favs.items);
+    const dispatch = useDispatch();
+
+    const isFav = favs.some(fav => fav.id === movieData.id);
+
+    function handleFavClick(addToFav, obj) {
+        if (addToFav === true) {
+            dispatch(addFav(obj));
+        } else {
+            dispatch(deleteFav(obj));
+        }
+    }
+
     useEffect(() => {
         const fetchMovieData = async () => {
             const response = await fetch(
-                `${movieDetails}${movieId}`, 
+                `${movieDetails}${movieId}`,
                 {
                     headers: {
                         accept: 'application/json',
@@ -103,6 +118,11 @@ function PageDetails() {
                             <p>{Math.trunc(movieData.vote_average * 10)}%</p>
                         </div>
                         <p>{movieData.overview}</p>
+                        <FavsButton           
+                            movieObj={movieData}
+                            isFav={isFav}
+                            handleFavClick={handleFavClick}
+                        />
                     </div>
                 
                     {/* Cast */}
@@ -138,7 +158,7 @@ function PageDetails() {
             )} n
         </main>
     );
-    
+
 }
 
 export default PageDetails;

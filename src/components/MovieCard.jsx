@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-function MovieCard({title, year, rating, imgPath, movieId, genres, genresList,overview}){
+function MovieCard({movieObj, movieId, genresList}){
     const [isClicked, setIsClicked] = useState(false);
 
     const handleClick = () => {
         setIsClicked(!isClicked);
     };
 
+    //shorten movie content string
     function truncateToWordLength(str, numWords, ending = '...') {
         const words = str.trim().split(/\s+/);
 
@@ -17,12 +18,17 @@ function MovieCard({title, year, rating, imgPath, movieId, genres, genresList,ov
         const truncatedWords = words.slice(0, numWords);
         return truncatedWords.join(' ') + ending;
     }
+    //convert rating to percent
+    const percentRating = Math.trunc(movieObj.vote_average*10);
 
-    const dateArray = year.split('-');
+    //get year of movie 
+    const dateArray = movieObj.release_date.split('-');
+
+    //format genres
     const getGenreNames = () => {
-        if (!genres || !genresList || genresList.length === 0) return '';
+        if (!movieObj.genre_ids || !genresList || genresList.length === 0) return '';
         
-        return genres
+        return movieObj.genre_ids
             .map(id => {
                 const genre = genresList.find(g => g.id === id);
                 return genre ? genre.name : '';
@@ -35,23 +41,26 @@ function MovieCard({title, year, rating, imgPath, movieId, genres, genresList,ov
     return (
         <div className='movieCard' onClick={handleClick}>
             <img 
-                src={`https://image.tmdb.org/t/p/w500${imgPath}`} 
-                alt={title}
+                src={`https://image.tmdb.org/t/p/w500${movieObj.poster_path}`} 
+                alt={movieObj.title}
                 style={{
-                    opacity: isClicked ? 0.3 : 1,
+                    opacity: isClicked ? 0.2 : 1,
                     transition: 'opacity 0.3s ease'
                 }}
             />
             {isClicked && (
                 <div className='card-popup'>
-                    <p>{truncateToWordLength(overview,8)}</p>
+                    <div className='rating-circle'>
+                        <p className='rating'>{percentRating}%</p>
+                    </div>
+                    <p className='excerpt'>{truncateToWordLength(movieObj.overview,8)}</p>
                     <Link 
                         to={`/details/${movieId}`}
                         className='movie-link'
-            
                     >
-                        Read More
+                     Read More
                     </Link>
+                    
                 </div>
             )}
             <p className='card-year'>{dateArray[0]}</p>
@@ -59,7 +68,7 @@ function MovieCard({title, year, rating, imgPath, movieId, genres, genresList,ov
                         color:'white',
                         textDecoration: 'none'
                     }}>
-            <h2>{title}</h2>
+            <h2>{movieObj.title}</h2>
             </Link>
             <p className="genres">{getGenreNames()}</p>
         </div>
