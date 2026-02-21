@@ -59,6 +59,7 @@ function PageHome(){
 			// Empty search
 			if (search.trim() === "") {
 				setSearch([]);
+				setSearchResult([]);
 				return;
 			}
 
@@ -95,14 +96,16 @@ function PageHome(){
 					{/* https://www.youtube.com/watch?v=o1XcuaCcsDA - 'Search Bar with Auto Suggestions using API' section */}
 					<div className='search-container'>
 						<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' onChange={changeHandler} value={search}/>
-						<div className='search-results'>
-							{searchResult.map((result) => {
-								return <div className='individual-search-result'>
-											<img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt={result.title}/>
-											<a href={`/details/${result.id}`}>{result.title}</a>
-										</div>
-							})}
-						</div>
+						{searchResult.length > 0 && 
+							<div className='search-results'>
+								{searchResult.map((result) => {
+									return <div key={result.id} className='individual-search-result'>
+												<img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt={result.title}/>
+												<a href={`/details/${result.id}`}>{result.title}</a>
+											</div>
+								})}
+							</div>
+						}
 					</div>
 				</div>
 
