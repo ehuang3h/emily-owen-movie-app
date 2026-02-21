@@ -55,10 +55,10 @@ function PageHome(){
 	
 	return (
 		<main>
-            <section>
-               {/* carousel */}
-                
-            </section>
+		
+			{movies.length > 0 && <MovieSlider movies={movies} />}
+	
+
 
 			<section>
 				<div className='search-filter-bar'>
