@@ -6,6 +6,9 @@ import { appTitle, movieDetails, apiReadToken } from '../globals/globalVariables
 
 import CastCard from '../components/CastCard'
 import MovieCardDetails from '../components/MovieCardDetails';
+import FavsButton from '../components/FavsButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFav, deleteFav } from '../favs/favSlice';
 
 function PageDetails() {
 
@@ -90,12 +93,27 @@ function PageDetails() {
             let data = await response.json();
             setRecommendationsData(data);
         }
+
+        const fetchRatingData = async () => {
+            const response = await fetch(
+                `${movieDetails}${movieId}/release_dates`, 
+                {
+                    headers: {
+                        accept: 'application/json',
+                        Authorization: 'Bearer ' + apiReadToken
+                    }
+                }
+            );
+            let data = await response.json();
+            setRatingData(data);
+        }
     
         if (movieId) {
             fetchMovieData();
             fetchCastData();
             fetchTrailerData();
             fetchRecommendationsData();
+            fetchRatingData();
         }
     }, [movieId]);
 
@@ -109,7 +127,14 @@ function PageDetails() {
                         <a className='explore-content' href="#overview">Explore<br/>v</a>
                     </div>
                     <div id="overview">
-                        <h1>{movieData.title}</h1>
+                        <div className='movie-detail-heading'>
+                            <h1>{movieData.title}</h1>
+                                <FavsButton           
+                                    movieObj={movieData}
+                                    isFav={isFav}
+                                    handleFavClick={handleFavClick}
+                                />
+                        </div>
                         <p>{movieData.release_date}</p>
                         <p>{movieData.genres && 
                             movieData.genres.map((genre) => genre.name).join(', ')}
