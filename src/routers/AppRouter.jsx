@@ -24,9 +24,11 @@ import '../styles/home.css';
 import '../styles/favourites.css'
 import '../styles/details.css';
 
+import { APP_FOLDER_NAME } from "../globals/globalVariables";
+
 function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={`/${APP_FOLDER_NAME}`}>
       <ScrollToTop />
       <div className="wrapper">
         <Header title={appTitle} />
