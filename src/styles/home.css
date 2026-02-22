@@ -69,28 +69,60 @@
 /* Movie filters */
 .movie-filters{
     margin-bottom: 1rem;
-}
-.movie-filters button{
-    background-color: var(--bg-color);
-    color:var(--link-color);
-    padding: 0.5rem;
-    font-weight: 700;
-    border-style: none;
-    transition-duration: 0.3s;
-    cursor: pointer;
-    border-bottom: 3px solid var(--bg-color);
+    
+    /* display: flex;
+   justify-content: space-between; */
     
 }
+.movie-filters button {
+    position: relative;
+    text-decoration: none; 
+    overflow: hidden;
+    background-color: var(--bg-color);
+    color: var(--link-color);
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin: 0 0.2rem;
+    font-weight: 700;
+    border-style: none;
+    cursor: pointer;
+}
 
-.movie-filters button:hover, .movie-filters button:active{
+.movie-filters button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--link-color);
+    transform: translate3d(-101%, 0, 0);
+    transition: transform 0.3s ease;
+}
+
+.movie-filters button:hover::after,
+.movie-filters button:focus::after {
+    transform: translate3d(0, 0, 0);
+}
+
+.movie-filters button.active::after {
+    transform: translate3d(0, 0, 0);
+}
+
+.movie-filters button:hover,
+.movie-filters button:focus {
     color: var(--text-color);
 }
 
-.movie-filters button.active{
-    color: var(--text-color);
-    border-bottom: 3px solid var(--link-color);
+.movie-filters button.active {
+     color: var(--text-color);
 }
 
+.home-filter-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
 
 
 .rating-circle{
@@ -181,8 +213,9 @@
         font-size: 1.5rem;
     }
 
-    .movie-filters button{
-        padding: 1rem;
+    .home-filter-grid{
+        display:grid;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .card-popup p, .movie-link{
@@ -196,6 +229,17 @@
 
     .search-filter-bar{
         flex-direction: row;
+    }
+}
+
+@media (max-width: 335px){
+    .movieCards{
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    .movieCard{
+        width: 7rem;
+
     }
 }
 

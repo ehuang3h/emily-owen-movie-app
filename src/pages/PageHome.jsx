@@ -95,7 +95,7 @@ function PageHome(){
 			<section>
 				<div className='search-filter-bar'>
 					{/* filter btns */}
-					<div className="movie-filters">
+					<div className="movie-filters home-filter-grid">
 						
 						<button className={activeLink === 'Now Playing' ? 'active' : ''}onClick={() => {setFilter(nowPlaying); setActiveLink('Now Playing');}}>Now Playing</button>
 						<button className={activeLink === 'Top Rated' ? 'active' : ''}onClick={() => {setFilter(topRated); setActiveLink('Top Rated');}}>Top Rated</button>
