@@ -45,14 +45,13 @@ function PageFavs() {
                 <h1 className='favs-header'>Favourites</h1>
 
                 <div className='search-filter-bar'>
-                                  {/* {setFilter(nowPlaying); setActiveLink('Now Playing');} */}
                     <div className="movie-filters favs-filter-grid">
                         <button className={activeSort === 'Date Added' ? 'active' : ''}onClick={() => {setSortBy('dateAdded'); setActiveSort('Date Added');}}>Date Added</button>
                         <button className={activeSort === 'Release Date' ? 'active' : ''}onClick={() => {setSortBy('releaseDate'); setActiveSort('Release Date');}}>Release Date</button>
                         <button className={activeSort === 'Alphabetical' ? 'active' : ''}onClick={() => {setSortBy('alpha'); setActiveSort('Alphabetical');}}>Alphabetical</button>
             
                     </div>
-                    <input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' />
+                    {/* <input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' /> */}
                 </div>
     
 
