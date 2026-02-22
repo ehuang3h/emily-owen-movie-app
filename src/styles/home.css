@@ -290,3 +290,7 @@
     width: 30%;
 
 }
+
+#hidden-title {
+    display: none;
+}

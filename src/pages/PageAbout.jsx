@@ -12,7 +12,7 @@ function PageAbout() {
 	}, []);
 
     return (
-        <main>
+        <main id='main-content'>
             <section>
                 <h1>.mov</h1>
                 <p>.mov is a movie database built for film fanatics passionate about finding their next movie to binge.  Users can search, filter, and save movies to their favorites list, or discover new movie recommendations based on their favorite films.</p>

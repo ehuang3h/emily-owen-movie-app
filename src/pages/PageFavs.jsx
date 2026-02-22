@@ -40,7 +40,7 @@ function PageFavs() {
     const [activeSort, setActiveSort] = useState('Date Added');
 
     return (
-        <main>
+        <main id='main-content'>
             <section>
                 <h1>Favourites</h1>
 

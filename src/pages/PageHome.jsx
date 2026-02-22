@@ -87,8 +87,8 @@ function PageHome(){
 	const [activeLink, setActiveLink] = useState('Now Playing');
 
 	return (
-		<main>
-		
+		<main id='main-content'>
+			<h1 id='hidden-title'>mov Home</h1>
 			{movies.length > 0 && <MovieSlider movies={movies} />}
 	
 

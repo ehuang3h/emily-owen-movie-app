@@ -104,7 +104,7 @@ function PageDetails() {
     }, [movieId]);
 
     return (
-        <main>
+        <main id='main-content'>
             {movieData && castData && trailerData && recommendationsData && (
                 <>
                     {/* Overview */}
