@@ -9,6 +9,7 @@
     /* Colors */
     --bg-color: #000000;
     --text-color: #e8edf3;
+    --accent-color: #030f1d;
 
     /* Scrolling - used for jump to section links */
     scroll-behavior: smooth;

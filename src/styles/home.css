@@ -217,7 +217,7 @@
     position: absolute;
     top: 100%;
     z-index: 10;
-    background-color: #030f1d;
+    background-color: var(--accent-color);
     row-gap: 0.75rem;
     padding: 0.75rem;
 }

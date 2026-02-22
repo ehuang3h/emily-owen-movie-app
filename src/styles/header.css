@@ -21,13 +21,16 @@ nav {
     width: 100%;
 
     /* Position at bottom of screen */
-    padding: 0;
+    padding: 1rem 0;
+    margin: 0;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     justify-content: space-evenly;
     z-index: 100;
+
+    background-color: var(--accent-color);
 }
 
 /* Nav links + logo */
@@ -62,5 +65,7 @@ nav {
         position: static;
         justify-content: flex-end;
         gap: 5rem;
+
+        background-color: var(--bg-color);
     }
 }
