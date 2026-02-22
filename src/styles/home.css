@@ -1,7 +1,7 @@
 .search-filter-bar{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 2rem;
     align-items: center;
 }
