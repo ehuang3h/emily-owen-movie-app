@@ -10,8 +10,6 @@ import MovieCardDetails from '../components/MovieCardDetails';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFav, deleteFav } from '../favs/favSlice';
 
-import noBackdrop from '../imgs/no-image-backdrop.png';
-
 function PageDetails() {
 
     useEffect(() => {
@@ -110,10 +108,7 @@ function PageDetails() {
                 <>
                     {/* Overview */}
                     <div className='backdrop-container'>
-                        <img className="backdrop" src={movieData.backdrop_path 
-                                                       ? `https://image.tmdb.org/t/p/original${movieData.backdrop_path}`
-                                                       : noBackdrop}  
-                                                  alt={movieData.title} />
+                        <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt="" />
                         <a className='explore-content' href="#overview">Explore<br/>v</a>
                     </div>
                     <div id="overview">
@@ -122,8 +117,9 @@ function PageDetails() {
                         <p>{movieData.genres && 
                             movieData.genres.map((genre) => genre.name).join(', ')}
                         </p>
-                        <div id='rating-container'>
-                            <p>{recommendationsData.results?.find(({iso_3166_1}) => iso_3166_1  == "CA")?.release_dates[0]?.certification ||
+                        <div className='rating-container'>
+                            <p>{ratingData.results && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA") && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates &&
+                                ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates[0].certification ||
                                 "NR"}</p>
                         </div>
                         <p>{movieData.overview}</p>
