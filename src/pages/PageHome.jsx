@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres } from '../globals/globalVariables';
 import MovieCard from '../components/MovieCard';
 import MovieSlider from '../components/MovieSlider';
+
+import noPoster from '../imgs/no-image-poster.png';
 function PageHome(){
 
 
@@ -107,7 +109,10 @@ function PageHome(){
 							<div className='search-results'>
 								{searchResult.map((result) => {
 									return <div key={result.id} className='individual-search-result'>
-												<img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`} alt={result.title}/>
+												<img src={result.poster_path 
+														? `https://image.tmdb.org/t/p/w500${result.poster_path}`
+														: noPoster } 
+														alt={result.title}/>
 												<a href={`/details/${result.id}`}>{result.title}</a>
 											</div>
 								})}

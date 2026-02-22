@@ -10,6 +10,8 @@ import FavsButton from '../components/FavsButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFav, deleteFav } from '../favs/favSlice';
 
+import noBackdrop from '../imgs/no-image-backdrop.png';
+
 function PageDetails() {
 
     useEffect(() => {
@@ -107,7 +109,11 @@ function PageDetails() {
                 <>
                     {/* Overview */}
                     <div className='backdrop-container'>
-                        <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt={movieData.title} />
+                        <img className="backdrop" src={movieData.backdrop_path
+                                                      ? `https://image.tmdb.org/t/p/original${movieData.backdrop_path} `
+                                                      : noBackdrop 
+                                                      }
+                                                      alt={movieData.title}/>
                         <a className='explore-content' href="#overview">Explore Content<br/>v</a>
                     </div>
                     <div id="overview">
