@@ -153,10 +153,11 @@ function PageDetails() {
                     {/* Trailer */}
                     <section className='trailer-container'>
                         <h2>Trailer</h2>
-                        <iframe src={trailerData.results  && trailerData.results.find(video => video.site=='YouTube') && 
-                                    `https://www.youtube.com/embed/${trailerData.results[0].key}`}
-                                allowFullScreen>        
-                        </iframe>
+                        {trailerData.results?.find(video => video.site=='YouTube' && video.type=='Trailer')
+                            ?<iframe src={`https://www.youtube.com/embed/${trailerData.results.find(video => video.site=='YouTube' && video.type=='Trailer').key}`}
+                                    allowFullScreen>        
+                            </iframe>
+                            : <p>No available trailer.</p>}
                     </section>
 
                     {/* Explore More */}
@@ -165,7 +166,7 @@ function PageDetails() {
                         <div id='explore-container'>
                             {recommendationsData.results && 
                             recommendationsData.total_results > 0 &&   
-                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} overview={movie.overview}/>)})}
+                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} overview={movie.overview}/>)}) || <p>No recommendations available.</p>}
                         </div>
                     </section>
                 </>
