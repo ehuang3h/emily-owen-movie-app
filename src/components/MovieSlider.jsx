@@ -1,6 +1,8 @@
 import HeroSlider, { Slide, Nav, Overlay } from 'hero-slider';
 import { Link } from 'react-router-dom';
 import 'hero-slider/dist/index.css';
+import {truncateToWordLength} from '../utilities/truncate.js';
+
 
 
 // console.log(HeroSlider)
@@ -27,6 +29,7 @@ function MovieSlider({ movies }) {
                         <Overlay>
                             <div className="slide-content">
                                 <h2>{movie.title}</h2>
+                                <p>{truncateToWordLength(movie.overview,12)}</p>
                                 <Link to={`/details/${movie.id}`}>Read More</Link>
                             </div>
                         </Overlay>
