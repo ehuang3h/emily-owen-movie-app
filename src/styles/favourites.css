@@ -22,3 +22,14 @@
     fill: var(--text-color);
     transition-duration: 0.3s;
 }
+
+/* testing styling for favs icon */
+.movie-detail-heading{
+    display: flex;
+}
+
+.movie-detail-heading svg{
+    height: auto;
+    width: 4rem;
+    
+}

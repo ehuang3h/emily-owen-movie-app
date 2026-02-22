@@ -1,6 +1,6 @@
 .search-filter-bar{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 2rem;
     align-items: center;
@@ -67,6 +67,9 @@
 }
 
 /* Movie filters */
+.movie-filters{
+    margin-bottom: 1rem;
+}
 .movie-filters button{
     background-color: var(--bg-color);
     color:var(--link-color);
@@ -75,11 +78,17 @@
     border-style: none;
     transition-duration: 0.3s;
     cursor: pointer;
+    border-bottom: 3px solid var(--bg-color);
     
 }
 
-.movie-filters button:hover{
+.movie-filters button:hover, .movie-filters button:active{
     color: var(--text-color);
+}
+
+.movie-filters button.active{
+    color: var(--text-color);
+    border-bottom: 3px solid var(--link-color);
 }
 
 
@@ -106,7 +115,63 @@
     transform: translate(-50%, -50%);
 }
 
-@media(min-width:650px){
+.slider-area{
+    position: relative;
+    width: 100vw;
+    height: 60vh;
+    margin-left: calc(50% - 50vw);
+}
+
+.slide-img-container {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    margin-left: calc(50% - 50vw);
+}
+
+.slide-img-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: center; 
+}
+
+/* Gradient filter container: https://jsfiddle.net/hcr3Lmj1/2/ */ 
+.slide-img-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        var(--bg-color),
+        rgba(0,0,0,0) 75%
+    );
+    pointer-events: none;
+}
+
+.slide-content{
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}
+
+.slide-content a{
+    font-weight: 700;
+    color:var(--link-color);
+    border-style: none;
+    border-bottom: 2px solid;
+    text-decoration: none;
+}
+
+.slide-content h2{
+    font-size: 2rem;
+}
+
+@media(min-width:675px){
+
+    .movieCards{
+        justify-content: space-between;
+    }
     .movieCard{
         width: 12rem;
 
@@ -127,6 +192,10 @@
     .rating-circle{
         height: 2.35rem;
         width: 2.35rem;
+    }
+
+    .search-filter-bar{
+        flex-direction: row;
     }
 }
 

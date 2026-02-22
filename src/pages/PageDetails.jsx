@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { appTitle, movieDetails, apiReadToken } from '../globals/globalVariables';
-import FavsButton from '../components/FavsButton';
-import { useSelector, useDispatch } from 'react-redux';
-import { addFav, deleteFav } from '../favs/favSlice';
 
 import CastCard from '../components/CastCard'
 import MovieCardDetails from '../components/MovieCardDetails';
+import FavsButton from '../components/FavsButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { addFav, deleteFav } from '../favs/favSlice';
 
 function PageDetails() {
 
@@ -17,6 +17,7 @@ function PageDetails() {
     }, []);
 
     const { movieId } = useParams();
+    
     const [movieData, setMovieData] = useState([]);
     const [castData, setCastData] = useState([]);
     const [trailerData, setTrailerData] = useState([]);
@@ -38,7 +39,7 @@ function PageDetails() {
     useEffect(() => {
         const fetchMovieData = async () => {
             const response = await fetch(
-                `${movieDetails}${movieId}`,
+                `${movieDetails}${movieId}`, 
                 {
                     headers: {
                         accept: 'application/json',
@@ -107,6 +108,7 @@ function PageDetails() {
                     {/* Overview */}
                     <div className='backdrop-container'>
                         <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt={movieData.title} />
+                        <a className='explore-content' href="#overview">Explore Content<br/>v</a>
                     </div>
                     <div id="overview">
                         <div className='title-fav'>
@@ -161,10 +163,10 @@ function PageDetails() {
                         </div>
                     </section>
                 </>
-            )} n
+            )}
         </main>
     );
-
+    
 }
 
 export default PageDetails;
