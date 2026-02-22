@@ -63,7 +63,7 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     width:80%;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 /* Movie filters */
@@ -130,17 +130,17 @@
     width: 2rem;
     height: 2rem;
     background-color: black;
-    border: 2px white solid;
+    border: 3px white solid;
     border-radius: 50%;
-    top: 5%;
-    left: 80%;
+    top: 7%;
+    left: 82%;
     transform: translate(-50%, -50%);
     z-index: 20;
 }
 
 .rating{
     position: absolute;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     top: 50%;
     left: 50%; 
     margin: 0;
@@ -219,7 +219,7 @@
     }
 
     .card-popup p, .movie-link{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .rating-circle{

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres } from '../globals/globalVariables';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import MovieSlider from '../components/MovieSlider';
 
@@ -113,7 +114,7 @@ function PageHome(){
 														? `https://image.tmdb.org/t/p/w500${result.poster_path}`
 														: noPoster } 
 														alt={result.title}/>
-												<a href={`/details/${result.id}`}>{result.title}</a>
+												<Link to={`/details/${result.id}`}>{result.title}</Link>
 											</div>
 								})}
 							</div>

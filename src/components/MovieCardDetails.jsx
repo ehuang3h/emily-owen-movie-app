@@ -35,6 +35,9 @@ function MovieCardDetails({title, year, rating, imgPath, movieId, overview}){
             />
             {isClicked && (
                 <div className='card-details-popup'>
+                    <div className='rating-circle'>
+                        <p id='details-rating' className='rating'>{rating}%</p>
+                    </div>
                     <p>{truncateToWordLength(overview,8)}</p>
                     <Link 
                         to={`/details/${movieId}`}
