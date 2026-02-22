@@ -7,6 +7,9 @@ import { appTitle, movieDetails, apiReadToken } from '../globals/globalVariables
 import CastCard from '../components/CastCard'
 import MovieCardDetails from '../components/MovieCardDetails';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { addFav, deleteFav } from '../favs/favSlice';
+
 function PageDetails() {
 
     useEffect(() => {
