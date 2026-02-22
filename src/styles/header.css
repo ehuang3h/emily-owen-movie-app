@@ -6,9 +6,19 @@
 }
 
 /* Nav-links */
-nav {
+#nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #000000;
+    padding-bottom: 0.5rem;
+}
+
+.nav-bar-content {
     display: flex;
-    align-items: baseline;
+    justify-content: center;
 }
 
 /* Nav list (Home/Favourites/About) */
@@ -61,11 +71,20 @@ nav {
 }
  
 @media(min-width: 64em) {
+    .nav-bar-content {
+        display: flex;
+        justify-content: space-between;
+        max-width: 75rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+        align-items: baseline;
+        margin: 0 auto;
+    }
+
     #nav-bar ul {
         position: static;
-        justify-content: flex-end;
+        width: auto;
         gap: 5rem;
-
         background-color: var(--bg-color);
     }
 }
