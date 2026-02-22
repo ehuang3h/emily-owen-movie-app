@@ -78,3 +78,15 @@ p {
   font-weight: bold;
   transition: top 0.3s;
 }
+
+@media(min-width: 675px){
+    .wrapper{
+        padding: 0 2rem;
+    }
+}
+
+@media(max-width: 375px){
+    .wrapper{
+        padding: 0 0.5rem;
+    }
+}

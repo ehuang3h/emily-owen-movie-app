@@ -42,11 +42,11 @@ function PageFavs() {
     return (
         <main id='main-content'>
             <section>
-                <h1>Favourites</h1>
+                <h1 className='favs-header'>Favourites</h1>
 
                 <div className='search-filter-bar'>
                                   {/* {setFilter(nowPlaying); setActiveLink('Now Playing');} */}
-                    <div className="movie-filters">
+                    <div className="movie-filters favs-filter-grid">
                         <button className={activeSort === 'Date Added' ? 'active' : ''}onClick={() => {setSortBy('dateAdded'); setActiveSort('Date Added');}}>Date Added</button>
                         <button className={activeSort === 'Release Date' ? 'active' : ''}onClick={() => {setSortBy('releaseDate'); setActiveSort('Release Date');}}>Release Date</button>
                         <button className={activeSort === 'Alphabetical' ? 'active' : ''}onClick={() => {setSortBy('alpha'); setActiveSort('Alphabetical');}}>Alphabetical</button>
@@ -56,7 +56,7 @@ function PageFavs() {
                 </div>
     
 
-                {favs.length < 1 ? <p>Your favourites list is currently empty. Add favourite movies by clicking the <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#5d8bec"><path d="M200-120v-665q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480-240 200-120Zm60-91 220-93 220 93v-574H260v574Zm0-574h440-440Z"/></svg> on movie cards.</p> : 
+                {favs.length < 1 ? <p>Your favourites list is currently empty. Add favourite movies by clicking the <svg style={{ verticalAlign: 'middle' }} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5d8bec"><path d="M200-120v-665q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480-240 200-120Zm60-91 220-93 220 93v-574H260v574Zm0-574h440-440Z"/></svg> on movie cards.</p> : 
                     <div className="favs-area">
                         {sortedFavs.map((movie, i) => {
                             return( <div className='favs-card'>

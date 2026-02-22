@@ -39,7 +39,12 @@ function MovieCard({movieObj, movieId, genresList}){
     
 
     return (
-        <div className='movieCard' onClick={handleClick}>
+        <div className='movieCard' 
+        onClick={handleClick}
+        onMouseEnter={() => setIsClicked(true)}
+        onMouseLeave={() => setIsClicked(false)}
+        
+        >
             <img 
                 src={`https://image.tmdb.org/t/p/w500${movieObj.poster_path}`} 
                 alt={movieObj.title}
