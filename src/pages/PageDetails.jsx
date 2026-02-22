@@ -106,23 +106,29 @@ function PageDetails() {
                 <>
                     {/* Overview */}
                     <div className='backdrop-container'>
-                        <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt="" />
+                        <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt={movieData.title} />
                     </div>
                     <div id="overview">
-                        <h1>{movieData.title}</h1>
-                        <p>{movieData.release_date}</p>
-                        <p>{movieData.genres && 
-                            movieData.genres.map((genre) => genre.name).join(', ')}
-                        </p>
-                        <div id='rating-container'>
-                            <p>{Math.trunc(movieData.vote_average * 10)}%</p>
+                        <div className='title-fav'>
+                            <h1>{movieData.title}</h1>
+                            <FavsButton           
+                                movieObj={movieData}
+                                isFav={isFav}
+                                handleFavClick={handleFavClick}
+                            />
+                        </div>
+                        <div className='info-rating'>
+                            <div id='rating-container'>
+                                <p>{Math.trunc(movieData.vote_average * 10)}%</p>
+                            </div>
+                            <div>
+                                <p>{movieData.release_date}</p>
+                                <p>{movieData.genres && 
+                                    movieData.genres.map((genre) => genre.name).join(', ')}
+                                </p>
+                            </div>
                         </div>
                         <p>{movieData.overview}</p>
-                        <FavsButton           
-                            movieObj={movieData}
-                            isFav={isFav}
-                            handleFavClick={handleFavClick}
-                        />
                     </div>
                 
                     {/* Cast */}
