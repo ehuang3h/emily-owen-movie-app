@@ -69,10 +69,8 @@
 /* Movie filters */
 .movie-filters{
     margin-bottom: 1rem;
-    
-    /* display: flex;
-   justify-content: space-between; */
-    
+    width: 100%;
+
 }
 .movie-filters button {
     position: relative;
@@ -184,7 +182,7 @@
 .slide-content{
     position: absolute;
     top: 40%;
-    left: 10%;
+    left: 5%;
 }
 
 .slide-content a{
@@ -197,6 +195,7 @@
 
 .slide-content h2{
     font-size: 2rem;
+    margin-right: 1rem;
 }
 
 @media(min-width:675px){
@@ -213,13 +212,9 @@
         font-size: 1.5rem;
     }
 
-    /* .home-filter-grid{
-        display:grid;
-        grid-template-columns: repeat(4, 1fr);
-    } */
-     .movie-filters button{
+    .movie-filters button{
         font-size: 1rem;
-     }
+    }
 
     .card-popup p, .movie-link{
         font-size: 1rem;
@@ -233,8 +228,20 @@
     .search-filter-bar{
         flex-direction: row;
     }
+    .slide-content{
+        left: 10%;
+    }
+    .slide-content h2{
+        font-size: 2.5rem;
+    }
 }
 
+@media(min-width:830px){
+    
+    .movie-filters{
+       width: 50%;
+    }
+}
 
 /* SEARCH SECTION */
 

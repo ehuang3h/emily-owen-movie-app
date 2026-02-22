@@ -16,7 +16,7 @@ function MovieSlider({ movies }) {
     return (
         
           <div className='slider-area'>
-            <HeroSlider height={"60vh"} autoplay={{ shouldAutoplay: true, autoplayDuration: 5000 }}>
+            <HeroSlider height={"60vh"} autoplay={{ shouldAutoplay: true, autoplayDuration: 10000 }}>
                 
                 {sliderMovies.map(movie => (
                     <Slide

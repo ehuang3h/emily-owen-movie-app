@@ -1,3 +1,6 @@
+.favs-header{
+    font-size: 3rem;
+    }
 .favs-area{
     display: flex;
     flex-direction: row;
@@ -23,6 +26,11 @@
     transition-duration: 0.3s;
 }
 
+.favs-filter-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 /* testing styling for favs icon */
 .movie-detail-heading{
     display: flex;
@@ -32,4 +40,10 @@
     height: auto;
     width: 4rem;
     
+}
+
+@media(min-width:675px){
+    .favs-header{
+    font-size: 4rem;
+    }
 }
