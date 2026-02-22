@@ -21,7 +21,7 @@
 .wrapper {
     max-width: 75rem;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 /* TYPOGRAPHY */
@@ -53,4 +53,10 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 4rem;
     margin: 0;
+}
+
+@media(min-width: 675px){
+    .wrapper{
+        padding: 0 2rem;
+    }
 }
