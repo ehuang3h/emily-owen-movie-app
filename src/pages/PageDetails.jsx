@@ -127,6 +127,7 @@ function PageDetails() {
                         <a className='explore-content' href="#overview">Explore<br/>v</a>
                     </div>
                     <div id="overview">
+                        {/* testing svg icon placement and sizing */}
                         <div className='movie-detail-heading'>
                             <h1>{movieData.title}</h1>
                                 <FavsButton           
@@ -140,9 +141,10 @@ function PageDetails() {
                             movieData.genres.map((genre) => genre.name).join(', ')}
                         </p>
                         <div className='rating-container'>
-                            <p>{ratingData.results && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA") && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates &&
+                            {/* <p>{ratingData.results && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA") && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates &&
                                 ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates[0].certification ||
-                                "NR"}</p>
+                                "NR"}</p> */}
+                                <p>{Math.trunc(movieData.vote_average * 10)}%</p>
                         </div>
                         <p>{movieData.overview}</p>
                     </div>

@@ -1,14 +1,14 @@
 import HeroSlider, { Slide, Nav, Overlay } from 'hero-slider';
 import { Link } from 'react-router-dom';
 import 'hero-slider/dist/index.css';
-import * as HeroSliderExports from 'hero-slider';
-console.log(HeroSliderExports);
+
+
 // console.log(HeroSlider)
 function MovieSlider({ movies }) {
 
     //first 3 movies
     const sliderMovies = movies.slice(0, 3);
-    console.log(sliderMovies.map(m => m.backdrop_path));
+   
     //readme,documentation
   // https://github.com/rmolinamir/hero-slider
     return (

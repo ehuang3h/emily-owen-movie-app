@@ -80,7 +80,9 @@ function PageHome(){
 	useEffect(() => {
         document.title = `${appTitle} - Home`;
     }, []);
-	
+
+	const [activeLink, setActiveLink] = useState('Now Playing');
+
 	return (
 		<main>
 		
@@ -92,10 +94,11 @@ function PageHome(){
 				<div className='search-filter-bar'>
 					{/* filter btns */}
 					<div className="movie-filters">
-						<button onClick={() => setFilter(nowPlaying)}>Now Playing</button>
-						<button onClick={() => setFilter(topRated)}>Top Rated</button>
-						<button onClick={() => setFilter(upcoming)}>Upcoming</button>
-						<button onClick={() => setFilter(popular)}>Popular</button>
+						
+						<button className={activeLink === 'Now Playing' ? 'active' : ''}onClick={() => {setFilter(nowPlaying); setActiveLink('Now Playing');}}>Now Playing</button>
+						<button className={activeLink === 'Top Rated' ? 'active' : ''}onClick={() => {setFilter(topRated); setActiveLink('Top Rated');}}>Top Rated</button>
+						<button className={activeLink === 'Upcoming' ? 'active' : ''}onClick={() => {setFilter(upcoming); setActiveLink('Upcoming');}}>Upcoming</button>
+						<button className={activeLink === 'Popular' ? 'active' : ''}onClick={() => {setFilter(popular); setActiveLink('Popular');}}>Popular</button>
 					</div>
 					{/* https://www.youtube.com/watch?v=o1XcuaCcsDA - 'Search Bar with Auto Suggestions using API' section */}
 					<div className='search-container'>

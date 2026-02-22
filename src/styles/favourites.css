@@ -23,6 +23,13 @@
     transition-duration: 0.3s;
 }
 
+/* testing styling for favs icon */
 .movie-detail-heading{
-        display: flex;
+    display: flex;
+}
+
+.movie-detail-heading svg{
+    height: auto;
+    width: 4rem;
+    
 }
