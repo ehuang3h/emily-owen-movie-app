@@ -12,7 +12,7 @@ function PageHome(){
 	const [genresList, setGenresList] = useState([]);
 
 	// Search function 
-	const [search, setSearch] = useState(""); // Searched movie name
+	const [search, setSearch] = useState([]); // Searched movie name
 	const [searchResult, setSearchResult] = useState([]); // Search results
 	const changeHandler = e => {
 		setSearch(e.target.value);
@@ -58,7 +58,7 @@ function PageHome(){
 
 			// Empty search
 			if (search.trim() === "") {
-				setSearch("");
+				setSearch([]);
 				setSearchResult([]);
 				return;
 			}
