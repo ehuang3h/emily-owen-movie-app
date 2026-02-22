@@ -3,12 +3,14 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { appTitle, movieDetails, apiReadToken } from '../globals/globalVariables';
-import FavsButton from '../components/FavsButton';
-import { useSelector, useDispatch } from 'react-redux';
-import { addFav, deleteFav } from '../favs/favSlice';
 
 import CastCard from '../components/CastCard'
 import MovieCardDetails from '../components/MovieCardDetails';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { addFav, deleteFav } from '../favs/favSlice';
+
+import noBackdrop from '../imgs/no-image-backdrop.png';
 
 function PageDetails() {
 
@@ -17,6 +19,7 @@ function PageDetails() {
     }, []);
 
     const { movieId } = useParams();
+    
     const [movieData, setMovieData] = useState([]);
     const [castData, setCastData] = useState([]);
     const [trailerData, setTrailerData] = useState([]);
@@ -34,11 +37,12 @@ function PageDetails() {
             dispatch(deleteFav(obj));
         }
     }
+    const [ratingData, setRatingData] = useState([]);
 
     useEffect(() => {
         const fetchMovieData = async () => {
             const response = await fetch(
-                `${movieDetails}${movieId}`,
+                `${movieDetails}${movieId}`, 
                 {
                     headers: {
                         accept: 'application/json',
@@ -106,7 +110,11 @@ function PageDetails() {
                 <>
                     {/* Overview */}
                     <div className='backdrop-container'>
-                        <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt="" />
+                        <img className="backdrop" src={movieData.backdrop_path 
+                                                       ? `https://image.tmdb.org/t/p/original${movieData.backdrop_path}`
+                                                       : noBackdrop}  
+                                                  alt={movieData.title} />
+                        <a className='explore-content' href="#overview">Explore<br/>v</a>
                     </div>
                     <div id="overview">
                         <h1>{movieData.title}</h1>
@@ -115,14 +123,11 @@ function PageDetails() {
                             movieData.genres.map((genre) => genre.name).join(', ')}
                         </p>
                         <div id='rating-container'>
-                            <p>{Math.trunc(movieData.vote_average * 10)}%</p>
+                            <p>{ratingData.results && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA") && ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates &&
+                                ratingData.results.find(({iso_3166_1}) => iso_3166_1  == "CA").release_dates[0].certification ||
+                                "NR"}</p>
                         </div>
                         <p>{movieData.overview}</p>
-                        <FavsButton           
-                            movieObj={movieData}
-                            isFav={isFav}
-                            handleFavClick={handleFavClick}
-                        />
                     </div>
                 
                     {/* Cast */}
@@ -155,10 +160,10 @@ function PageDetails() {
                         </div>
                     </section>
                 </>
-            )} n
+            )} 
         </main>
     );
-
+    
 }
 
 export default PageDetails;
