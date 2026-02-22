@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import noPoster from '../imgs/no-image-poster.png';
 
 function MovieCardDetails({title, year, rating, imgPath, movieId, overview}){
     const [isClicked, setIsClicked] = useState(false);
@@ -23,7 +24,9 @@ function MovieCardDetails({title, year, rating, imgPath, movieId, overview}){
     return (
         <div className='movie-card-details' onClick={handleClick}>
             <img 
-                src={`https://image.tmdb.org/t/p/w500${imgPath}`} 
+                src={imgPath
+                    ?`https://image.tmdb.org/t/p/w500${imgPath}`
+                    : noPoster} 
                 alt={title}
                 style={{
                     opacity: isClicked ? 0.3 : 1,

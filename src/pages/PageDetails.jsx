@@ -10,6 +10,8 @@ import FavsButton from '../components/FavsButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFav, deleteFav } from '../favs/favSlice';
 
+import noBackdrop from '../imgs/no-image-backdrop.png';
+
 function PageDetails() {
 
     useEffect(() => {
@@ -35,7 +37,6 @@ function PageDetails() {
             dispatch(deleteFav(obj));
         }
     }
-    const [ratingData, setRatingData] = useState([]);
 
     useEffect(() => {
         const fetchMovieData = async () => {
@@ -93,27 +94,12 @@ function PageDetails() {
             let data = await response.json();
             setRecommendationsData(data);
         }
-
-        const fetchRatingData = async () => {
-            const response = await fetch(
-                `${movieDetails}${movieId}/release_dates`, 
-                {
-                    headers: {
-                        accept: 'application/json',
-                        Authorization: 'Bearer ' + apiReadToken
-                    }
-                }
-            );
-            let data = await response.json();
-            setRatingData(data);
-        }
     
         if (movieId) {
             fetchMovieData();
             fetchCastData();
             fetchTrailerData();
             fetchRecommendationsData();
-            fetchRatingData();
         }
     }, [movieId]);
 
@@ -123,25 +109,32 @@ function PageDetails() {
                 <>
                     {/* Overview */}
                     <div className='backdrop-container'>
-                        <img className="backdrop" src={`https://image.tmdb.org/t/p/original${movieData.backdrop_path}`}  alt="" />
-                        <a className='explore-content' href="#overview">Explore<br/>v</a>
+                        <img className="backdrop" src={movieData.backdrop_path
+                                                      ? `https://image.tmdb.org/t/p/original${movieData.backdrop_path} `
+                                                      : noBackdrop 
+                                                      }
+                                                      alt={movieData.title}/>
+                        <a className='explore-content' href="#overview">Explore Content<br/>v</a>
                     </div>
                     <div id="overview">
-                        {/* testing svg icon placement and sizing */}
-                        <div className='movie-detail-heading'>
+                        <div className='title-fav'>
                             <h1>{movieData.title}</h1>
-                                <FavsButton           
-                                    movieObj={movieData}
-                                    isFav={isFav}
-                                    handleFavClick={handleFavClick}
-                                />
+                            <FavsButton           
+                                movieObj={movieData}
+                                isFav={isFav}
+                                handleFavClick={handleFavClick}
+                            />
                         </div>
-                        <p>{movieData.release_date}</p>
-                        <p>{movieData.genres && 
-                            movieData.genres.map((genre) => genre.name).join(', ')}
-                        </p>
-                        <div id='rating-container'>
+                        <div className='info-rating'>
+                            <div id='rating-container'>
                                 <p>{Math.trunc(movieData.vote_average * 10)}%</p>
+                            </div>
+                            <div>
+                                <p>{movieData.release_date}</p>
+                                <p>{movieData.genres && 
+                                    movieData.genres.map((genre) => genre.name).join(', ')}
+                                </p>
+                            </div>
                         </div>
                         <p>{movieData.overview}</p>
                     </div>
@@ -160,10 +153,11 @@ function PageDetails() {
                     {/* Trailer */}
                     <section className='trailer-container'>
                         <h2>Trailer</h2>
-                        <iframe src={trailerData.results  && trailerData.results.find(video => video.site=='YouTube') && 
-                                    `https://www.youtube.com/embed/${trailerData.results[0].key}`}
-                                allowFullScreen>        
-                        </iframe>
+                        {trailerData.results?.find(video => video.site=='YouTube' && video.type=='Trailer')
+                            ?<iframe src={`https://www.youtube.com/embed/${trailerData.results.find(video => video.site=='YouTube' && video.type=='Trailer').key}`}
+                                    allowFullScreen>        
+                            </iframe>
+                            : <p>No available trailer.</p>}
                     </section>
 
                     {/* Explore More */}
@@ -172,7 +166,7 @@ function PageDetails() {
                         <div id='explore-container'>
                             {recommendationsData.results && 
                             recommendationsData.total_results > 0 &&   
-                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} overview={movie.overview}/>)})}
+                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} overview={movie.overview}/>)}) || <p>No recommendations available.</p>}
                         </div>
                     </section>
                 </>

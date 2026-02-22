@@ -1,6 +1,7 @@
 export const appTitle = '.mov';
 export const appAuthor = 'Emily Huang, Owen Chan.';
 export const appStorageName = 'movie-app-favs';
+
 //searchpoints
 export const nowPlaying = 'https://api.themoviedb.org/3/movie/now_playing';
 export const popular = 'https://api.themoviedb.org/3/movie/popular';
@@ -15,3 +16,5 @@ export const movieDetails ='https://api.themoviedb.org/3/movie/';
 export const apiKey = import.meta.env.VITE_MOVIE_API;
 
 export const apiReadToken = import.meta.env.VITE_API_READ_TOKEN;
+
+export const APP_FOLDER_NAME = "mov";
