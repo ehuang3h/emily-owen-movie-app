@@ -28,7 +28,7 @@ function MovieSlider({ movies }) {
                     ><div className='slide-img-container'><img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt="" /></div>
                         <Overlay>
                             <div className="slide-content">
-                                <h2>{movie.title}</h2>
+                                <h1>{movie.title}</h1>
                                 <p>{truncateToWordLength(movie.overview,12)}</p>
                                 <Link to={`/details/${movie.id}`}>Read More</Link>
                             </div>
