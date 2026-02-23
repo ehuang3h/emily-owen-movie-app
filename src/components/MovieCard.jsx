@@ -73,7 +73,7 @@ function MovieCard({movieObj, movieId, genresList}){
                         color:'white',
                         textDecoration: 'none'
                     }}>
-            <h2>{movieObj.title}</h2>
+            <p className='card-film-title'>{movieObj.title}</p>
             </Link>
             <p className="genres">{getGenreNames()}</p>
         </div>

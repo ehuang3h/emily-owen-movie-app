@@ -33,8 +33,10 @@
     width: 100%;
 }
 
-.movieCard h2{
+.movieCard .card-film-title{
     margin-top: 0;
+    font-weight: bold;
+    font-family: var( --heading-font);
     font-size: 1.15rem;
 }
 
@@ -193,7 +195,7 @@
     text-decoration: none;
 }
 
-.slide-content h1{
+.slide-content h2{
     font-size: 2rem;
     margin-right: 1rem;
 }
@@ -208,7 +210,7 @@
 
     }
 
-    .movieCard h2{
+    .movieCard .card-film-title{
         font-size: 1.5rem;
     }
 
@@ -231,7 +233,7 @@
     .slide-content{
         left: 10%;
     }
-    .slide-content h1{
+    .slide-content h2{
         font-size: 2.5rem;
     }
 }

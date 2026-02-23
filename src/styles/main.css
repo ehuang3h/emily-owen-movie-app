@@ -16,6 +16,9 @@
     overflow-x: hidden;
 }
 
+html {
+    overflow-y: scroll; /* always show scrollbar */
+}
 /* LAYOUT */
 
 /* Site Wrapper */
