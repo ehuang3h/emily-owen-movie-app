@@ -31,6 +31,7 @@ function AppRouter() {
     <BrowserRouter basename={`/${APP_FOLDER_NAME}`}>
       <ScrollToTop />
       <div className="wrapper">
+        <a href="#main-content" className="skip-link">Skip to Content</a>
         <Header title={appTitle} />
         {/* <Nav /> */}
         <Routes>

@@ -88,3 +88,14 @@
         background-color: var(--bg-color);
     }
 }
+
+/* Footer */
+footer {
+    margin: 5rem 0;
+    display: flex;
+}
+
+footer p {
+    opacity: 0.5;
+    margin: 0 auto;
+}

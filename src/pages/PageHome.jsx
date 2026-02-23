@@ -1,7 +1,8 @@
 // Page Home
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres } from '../globals/globalVariables';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import MovieSlider from '../components/MovieSlider';
 
@@ -19,6 +20,18 @@ function PageHome(){
 	const changeHandler = e => {
 		setSearch(e.target.value);
 	}
+	
+	// https://www.youtube.com/watch?v=Tj499K6bGhU: detect outside click 
+	useEffect(() => {
+		document.addEventListener('click', handleClickOutside, true);
+	})
+	const closeSearch = useRef(null);
+	const handleClickOutside = (e) => {
+		if(!closeSearch.current.contains(e.target)) {
+			setSearchResult([]);
+		}
+	}
+
 
 	useEffect(() => {
         const fetchMovies = async () => {
@@ -86,8 +99,8 @@ function PageHome(){
 	const [activeLink, setActiveLink] = useState('Now Playing');
 
 	return (
-		<main>
-		
+		<main id='main-content'>
+			<h1 id='hidden-title'>mov Home</h1>
 			{movies.length > 0 && <MovieSlider movies={movies} />}
 	
 
@@ -104,7 +117,7 @@ function PageHome(){
 					</div>
 					{/* https://www.youtube.com/watch?v=o1XcuaCcsDA - 'Search Bar with Auto Suggestions using API' section */}
 					<div className='search-container'>
-						<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' onChange={changeHandler} value={search}/>
+						<input className="search-bar"type="search" name="searchbar" id="searchbar" placeholder='search' onChange={changeHandler} value={search} ref={closeSearch}/>
 						{searchResult.length > 0 && 
 							<div className='search-results'>
 								{searchResult.map((result) => {
@@ -113,7 +126,7 @@ function PageHome(){
 														? `https://image.tmdb.org/t/p/w500${result.poster_path}`
 														: noPoster } 
 														alt={result.title}/>
-												<a href={`/details/${result.id}`}>{result.title}</a>
+												<Link to={`/details/${result.id}`}>{result.title}</Link>
 											</div>
 								})}
 							</div>

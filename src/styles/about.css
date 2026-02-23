@@ -1,6 +1,9 @@
+.tmdb-logo-container {
+    display: flex;
+    justify-content: center;
+    margin: 10rem 0;
+}
+
 #tmdb-logo {
     width: 50px;
-    display: flex;
-    justify-self: center;
-    margin: 10rem 0;
 }

@@ -104,7 +104,7 @@ function PageDetails() {
     }, [movieId]);
 
     return (
-        <main>
+        <main id='main-content'>
             {movieData && castData && trailerData && recommendationsData && (
                 <>
                     {/* Overview */}
@@ -119,13 +119,13 @@ function PageDetails() {
                     <div id="overview">
                         <div className='title-fav'>
                             <h1>{movieData.title}</h1>
+                        </div>
+                        <div className='info-rating'>
                             <FavsButton           
                                 movieObj={movieData}
                                 isFav={isFav}
                                 handleFavClick={handleFavClick}
                             />
-                        </div>
-                        <div className='info-rating'>
                             <div id='rating-container'>
                                 <p>{Math.trunc(movieData.vote_average * 10)}%</p>
                             </div>
@@ -166,7 +166,7 @@ function PageDetails() {
                         <div id='explore-container'>
                             {recommendationsData.results && 
                             recommendationsData.total_results > 0 &&   
-                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} overview={movie.overview}/>)}) || <p>No recommendations available.</p>}
+                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} rating={Math.trunc(movie.vote_average)*10} overview={movie.overview}/>)}) || <p>No recommendations available.</p>}
                         </div>
                     </section>
                 </>
