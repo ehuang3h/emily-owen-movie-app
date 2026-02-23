@@ -1,5 +1,4 @@
 import { Provider } from 'react-redux';
-import './styles/styles.css';
 import { store } from './store/store.js';
 import AppRouter from './routers/AppRouter';
 
