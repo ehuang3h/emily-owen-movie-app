@@ -145,7 +145,7 @@ function PageDetails() {
                         <div className='cast-layout'>
                             {castData.cast && 
                              castData.cast.map((cast) => {return(
-                                <CastCard name={cast.name} imgPath={cast.profile_path}/>
+                                <CastCard key={cast.id} name={cast.name} imgPath={cast.profile_path}/>
                             );})}
                         </div>
                     </section>
@@ -166,7 +166,7 @@ function PageDetails() {
                         <div id='explore-container'>
                             {recommendationsData.results && 
                             recommendationsData.total_results > 0 &&   
-                            recommendationsData.results.map(movie => {return(<MovieCardDetails imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} rating={Math.trunc(movie.vote_average)*10} overview={movie.overview}/>)}) || <p>No recommendations available.</p>}
+                            recommendationsData.results.map(movie => {return(<MovieCardDetails key={movie.id} imgPath={movie.poster_path} title={movie.title} movieId={movie.id} year={movie.release_date} rating={Math.trunc(movie.vote_average)*10} overview={movie.overview}/>)}) || <p>No recommendations available.</p>}
                         </div>
                     </section>
                 </>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { appTitle , nowPlaying, topRated, upcoming, popular, apiReadToken, genres } from '../globals/globalVariables';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import MovieSlider from '../components/MovieSlider';
 
